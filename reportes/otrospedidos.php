@@ -25,20 +25,6 @@ use barber\Query\Select;
 require("../vendor/autoload.php");
 session_start();
 if ($_SESSION['tipo_cuenta'] == 'Administrador') {
-$query = new Select();
-
-$cadena = "SELECT cuenta.nombre, concat(cuenta.nombre,' ',cuenta.ap_paterno,' ',cuenta.ap_materno)as completo,
-         cuenta.direccion,cuenta.telefono,cuenta.correo FROM cuenta where cuenta.nombre_usuario='XxMarcelaXX'";
-
-$tabla = $query->seleccionar($cadena);
-
-foreach ($tabla as $row) {
-  $nombre = $row->nombre;
-  $completo = $row->completo;
-  $direccion = $row->direccion;
-  $telefono = $row->telefono;
-  $email = $row->correo;
-}
 ?>
 
 <body>
@@ -173,10 +159,10 @@ $hoy = date('y-m-d');
                 echo "<td>$ $registro->IVA</td>";
                 echo "<td>$ $registro->Monto_con_IVA</td>";
         ?>
-                <td><a href="../../views/scripts/finalizarpedido.php?id=<?php echo $registro->FOLIO ?>" class="btn btn-secondary">Finalizar</a></td>
+                <td><a href="../views/scripts/finalizarpedido.php?id=<?php echo $registro->FOLIO ?>" class="btn btn-secondary">Finalizar</a></td>
                 <?php
                 ?>
-                <td><a href="../../views/scripts/cancelarpedido.php?id=<?php echo $registro->FOLIO ?>" class="btn btn-danger">Cancelar</a></td>
+                <td><a href="../views/scripts/cancelarpedido.php?id=<?php echo $registro->FOLIO ?>" class="btn btn-danger">Cancelar</a></td>
         <?php
                 echo "</tr>";
             }
@@ -187,9 +173,6 @@ $hoy = date('y-m-d');
         ?>
     </div>
 </div>
-
-
-
   </main>
   <br>
   <?php
@@ -197,7 +180,6 @@ $hoy = date('y-m-d');
   echo "<h1>No se meta donde no le llaman perro</h1>";
   header("refresh:3;../views/scripts/cerrarsesion.php");
 }
-
   ?>
 </body>
 
